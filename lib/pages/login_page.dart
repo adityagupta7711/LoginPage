@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_page_auth/components/my_button.dart';
+import 'package:login_page_auth/components/square_tile.dart';
 import 'package:login_page_auth/components/textfield.dart';
 
 class Loginpage extends StatelessWidget {
@@ -20,6 +21,7 @@ class Loginpage extends StatelessWidget {
         //makes the ui avoid the notch area
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 50,
@@ -54,7 +56,7 @@ class Loginpage extends StatelessWidget {
                 hintText: 'Password',
                 obscureText: true,
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 20),
 
               //forgot password
               Text(
@@ -63,13 +65,13 @@ class Loginpage extends StatelessWidget {
               ),
 
               //sign in button
-              const SizedBox(height: 25),
+              const SizedBox(height: 35),
               MyButton(
                 onTap: signUserIn,
               ),
 
               //or continue with
-              const SizedBox(height: 25),
+              const SizedBox(height: 35),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
@@ -81,10 +83,10 @@ class Loginpage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                    'continue with',
-                    style: TextStyle(color: Colors.black87),
+                      'continue with',
+                      style: TextStyle(color: Colors.black87),
                     ),
-                     Expanded(
+                    Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Colors.black45,
@@ -93,17 +95,43 @@ class Loginpage extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
               //google + apple sign-in
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //google button
-                  Image.asset('lib/assets/google.png',
-                  height: 70,
-                  )
+                  SquareTile(imagePath: 'lib/assets/google.png'),
+
+                  const SizedBox(width: 10),
+
+                  //apple button
+                  SquareTile(imagePath: 'lib/assets/apple.png')
+                ],
+              ),
+
+              const SizedBox(
+                height: 40,
+              ),
+              //not a member? register now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(color: Color.fromRGBO(128, 0, 0, 1)),
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    'Register Now',
+                    style: TextStyle(
+                        color: Colors.red,
+                        decoration: TextDecoration.underline),
+                  ),
                 ],
               )
-
-              //not a member? register now
             ],
           ),
         ),
